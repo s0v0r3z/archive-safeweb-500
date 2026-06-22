@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jiuyou · 站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f4f5f7;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #2c3e4f;
+            line-height: 1.6;
+            padding: 2rem 1.2rem;
+        }
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* --- hero --- */
+        .hero {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 3.2rem 2.4rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03);
+            border: 1px solid #eaeef2;
+            margin-bottom: 2.4rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            color: #1f2a36;
+            margin-bottom: 0.8rem;
+        }
+        .hero h1 small {
+            font-size: 1.1rem;
+            font-weight: 380;
+            color: #6f7d8c;
+            display: block;
+            margin-top: 0.2rem;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 680px;
+            margin: 1.2rem auto 0;
+            color: #4a5b6b;
+        }
+        .hero .tagline {
+            display: inline-block;
+            background: #eef2f5;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #3f5669;
+            border: 1px solid #dae0e6;
+            margin-top: 1.2rem;
+        }
+
+        /* --- cards grid --- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.6rem;
+            margin-bottom: 2.4rem;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.8rem 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02), 0 1px 4px rgba(0,0,0,0.02);
+            border: 1px solid #e4e9ef;
+            transition: box-shadow 0.2s ease;
+        }
+        .card:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+        }
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 530;
+            margin-bottom: 0.75rem;
+            color: #1e2b3a;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .card h3 .emoji {
+            font-size: 1.3rem;
+        }
+        .card p {
+            color: #3e5366;
+            font-size: 0.98rem;
+            margin-bottom: 0.6rem;
+        }
+        .card .list-item {
+            padding-left: 0.2rem;
+            margin: 0.3rem 0 0.3rem 0.8rem;
+            list-style: none;
+        }
+        .card .list-item li {
+            margin-bottom: 0.2rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        .card .list-item li::before {
+            content: "·";
+            position: absolute;
+            left: 0;
+            color: #6b8ba0;
+            font-weight: bold;
+        }
+
+        /* --- single full-width card (说明区) --- */
+        .full-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2.2rem;
+            border: 1px solid #e4e9ef;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            margin-bottom: 2.4rem;
+        }
+        .full-card h2 {
+            font-size: 1.5rem;
+            font-weight: 530;
+            margin-bottom: 0.8rem;
+            color: #1e2b3a;
+        }
+        .full-card p {
+            color: #3e5366;
+            margin-bottom: 0.7rem;
+        }
+        .full-card .highlight {
+            background: #f2f6fa;
+            padding: 0.8rem 1.2rem;
+            border-radius: 14px;
+            border-left: 4px solid #7e9bb0;
+            margin: 1rem 0 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        /* --- FAQ 摘要 (折叠外观) --- */
+        .faq-block {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 2rem 2rem;
+            border: 1px solid #e4e9ef;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            margin-bottom: 2.4rem;
+        }
+        .faq-block h2 {
+            font-size: 1.4rem;
+            font-weight: 530;
+            margin-bottom: 1.2rem;
+            color: #1e2b3a;
+        }
+        .faq-item {
+            border-bottom: 1px solid #eef1f5;
+            padding: 0.75rem 0;
+        }
+        .faq-item:last-of-type {
+            border-bottom: 0;
+        }
+        .faq-q {
+            font-weight: 520;
+            color: #1f2c3b;
+            margin-bottom: 0.15rem;
+        }
+        .faq-a {
+            color: #4c6277;
+            font-size: 0.95rem;
+            padding-left: 0.2rem;
+        }
+
+        /* --- footer / bottom 链接 --- */
+        .bottom-links {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.6rem 2rem;
+            border: 1px solid #e4e9ef;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .bottom-links .copy {
+            color: #5f7386;
+            font-size: 0.9rem;
+        }
+        .bottom-links a {
+            color: #2d4b62;
+            text-decoration: none;
+            font-weight: 470;
+            border-bottom: 1px dotted #b6c9d8;
+            transition: border-color 0.15s;
+        }
+        .bottom-links a:hover {
+            border-bottom: 1px solid #2d4b62;
+        }
+        .link-group {
+            display: flex;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+        }
+
+        /* --- 响应式 --- */
+        @media (max-width: 780px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .hero {
+                padding: 2.4rem 1.5rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .full-card, .faq-block, .bottom-links {
+                padding: 1.6rem;
+            }
+            .bottom-links {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+            .link-group {
+                gap: 1.2rem;
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .card h3 {
+                font-size: 1.15rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero 区 -->
+    <section class="hero">
+        <h1>
+            jiuyou
+            <small>一个关于站点介绍与可信说明的落脚点</small>
+        </h1>
+        <p>
+            这里不卖课，不搞噱头。我们只是想把关于 <a href="https://ssl-jiuyou.com" style="color:#1e3c4f; text-decoration: underline; text-underline-offset: 3px;">jiuyou</a> 
+            的一些背景、用途和常见疑问，用平实的话放在这里。如果你刚好路过，或者想了解这个站点是否靠谱，不妨花几分钟看一看。
+        </p>
+        <span class="tagline">日常视角 · 真实边界</span>
+    </section>
+
+    <!-- 优势区 (两卡片) -->
+    <div class="grid-2">
+        <div class="card">
+            <h3><span class="emoji">📦</span> 定位与边界</h3>
+            <p>jiuyou 不是一个全功能平台，它更接近一个围绕特定需求搭建的信息节点。维护方倾向于保持轻量、直接，不堆砌模块。</p>
+            <ul class="list-item">
+                <li>内容方向聚焦，不盲目覆盖</li>
+                <li>无广告弹窗，无积分体系</li>
+                <li>更新节奏稳定，不追热点</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3><span class="emoji">🛡️</span> 可信说明</h3>
+            <p>站点使用标准 HTTPS (SSL)，数据传输经过加密。运维记录、域名信息均可通过常规方式查验，无隐匿注册。</p>
+            <ul class="list-item">
+                <li>SSL 证书有效，连接安全</li>
+                <li>联系渠道公开，反馈有回音</li>
+                <li>内容引用均标注来源或自撰</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 说明区 (单卡片, 更详细) -->
+    <section class="full-card">
+        <h2>站点介绍 · 从何说起</h2>
+        <p>
+            <a href="https://ssl-jiuyou.com" style="color:#1e3c4f; text-decoration: underline; text-underline-offset: 3px;">jiuyou</a> 
+            最初是因为几位朋友想找一个干净的地方，存放一些手册、工具索引和偶尔的随笔。后来逐渐变成现在这个样子——一个不太吵闹、也没有太多商业痕迹的角落。
+        </p>
+        <p>
+            内容方面，目前主要包括：轻量级技术笔记、软件使用备忘、以及一些偏生活向的整理。所有页面都经过人工校对，不接入第三方追踪脚本（除了必要的统计外），也没有隐藏的广告位。
+        </p>
+        <div class="highlight">
+            ⚡ 一点小提示：如果你是从搜索引擎跳转过来，想确认网站是否安全——是的，jiuyou 启用了加密连接，且服务器日志保留周期合规。没有发现恶意重定向或植入行为。
+        </div>
+    </section>
+
+    <!-- FAQ 摘要 (展示2-3条) -->
+    <section class="faq-block">
+        <h2>FAQ 摘要 · 几个常见问题</h2>
+        <div class="faq-item">
+            <div class="faq-q">Q: 这个站点主要做什么？</div>
+            <div class="faq-a">A: 更像一个数字笔记本 + 小工具索引。不卖东西，不收集隐私，只是把一些有用的东西放在一起。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Q: 内容多久更新一次？</div>
+            <div class="faq-a">A: 没有固定排期，平均每月会有 2～4 次小更新。重大变化会通过站点内部公告说明。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Q: 数据安全方面有什么保障？</div>
+            <div class="faq-a">A: 全站 HTTPS，无第三方评论系统，也没有用户注册体系（所以不存在账户泄露风险）。日志匿名化处理。</div>
+        </div>
+    </section>
+
+    <!-- 底部链接区 (包含指向 jiuyou 的链接) -->
+    <footer class="bottom-links">
+        <div class="copy">
+            © 2025 · <a href="https://ssl-jiuyou.com">jiuyou</a>
+        </div>
+        <div class="link-group">
+            <a href="https://ssl-jiuyou.com" style="border-bottom: 1px dotted #b6c9d8;">jiuyou</a>
+            <span style="color:#8d9fae;">·</span>
+            <a href="https://ssl-jiuyou.com" style="border-bottom: 1px dotted #b6c9d8;">jiuyou</a>
+            <span style="color:#8d9fae;">·</span>
+            <span style="color:#5b7186;">联系（页面内）</span>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>
